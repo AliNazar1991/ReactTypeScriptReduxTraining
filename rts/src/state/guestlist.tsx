@@ -1,10 +1,17 @@
-import { useState } from 'react'
-
+import { useEffect, useRef, useState } from 'react'
 import React from 'react'
+
 const GuestList: React.FC = () => {
+    const inputRef = useRef<HTMLInputElement | null>(null); // you also add any as type here for quickness
     const [name, setName] = useState('')
     const [guests, setGuests] = useState<string[]>([])
 
+    useEffect(() => {
+        if(!inputRef.current){
+            return;
+        }
+        inputRef.current.focus()
+    }, [])
 const onClick = ()=> {
     setName('');
     setGuests([...guests, name]);
@@ -15,7 +22,7 @@ const onClick = ()=> {
         <ul>
             {guests.map(guest => <li key={guest}>{guest}</li>)}
         </ul>
-        <input value={name} onChange={(e) => setName(e.target.value)} />
+        <input ref={inputRef} value={name} onChange={(e) => setName(e.target.value)} />
         <button onClick={onClick}>Add Guest</button>
     </div>
 };

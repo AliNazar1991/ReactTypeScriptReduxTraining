@@ -1,8 +1,8 @@
 import ReactDOM from "react-dom";
-import EventComponent from './events/EventComponent'
+import GuestList from './state/guestlist'
 const App = () => {
     return (<div>
-        <EventComponent />
+        <GuestList />
     </div>);
 };
 
