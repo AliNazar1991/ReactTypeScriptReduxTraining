@@ -21,6 +21,7 @@ const App = () => {
   }, []);
   const onClick = async () => {
     if (!ref.current) {
+      console.log(ref)
       return;
     }
     const result = await ref.current.build({
